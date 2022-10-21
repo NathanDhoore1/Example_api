@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const Campus = require('./models/campus');
+const Docent = require('./models/docent');
 
 router.get('/', (req,res) => {
     console.log('/ route called');
@@ -88,6 +89,16 @@ router.delete('/campus/delete/:id' , async(req, res) => {
         console.log(e);
         res.sendStatus(500);
     }
-})
+});
+
+router.get('/docent', async (req,res) => {
+    console.log('/docent route called');
+    try{
+        res.json(await Docent.find().populate('campussen').sort('voornaam'));
+    } catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
 
 module.exports = router;
