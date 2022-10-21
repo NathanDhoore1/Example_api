@@ -101,4 +101,34 @@ router.get('/docent', async (req,res) => {
     }
 });
 
+router.post('/docent/create', async (req,res) => {
+    console.log('/docent/create called');
+    try{
+        res.send(await Docent.create(req.body));
+    } catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.put('/docent/update/:id', async (req,res) => {
+    console.log('/docent/update/:id called');
+    try{
+        res.send(await Docent.findByIdAndUpdate(req.params.id, {$set: req.body}));
+    } catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.delete('/docent/delete/:id' , async(req, res) => {
+    console.log('docent/delete/:id called');
+    try{
+        res.send(await Docent.findByIdAndDelete(req.params.id));
+    } catch(e){
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 module.exports = router;
