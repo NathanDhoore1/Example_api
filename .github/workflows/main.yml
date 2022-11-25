@@ -1,7 +1,7 @@
 name: Node Build en test
 on:
   push:
-      branches: [main]
+      branches: [master]
 jobs:
   test_pull_request:
     runs-on: ${{matrix.os}}
