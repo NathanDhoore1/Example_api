@@ -1,5 +1,5 @@
 const request= require('supertest');
-const fs = require("os");
+const fs = require("fs");
 
 describe('get campus', () => {
     it('should return first campus', async () => {
@@ -14,7 +14,7 @@ describe('get campus', () => {
                 return console.log(err);
             }
             console.log("JSON file has been saved.");
-        })
+        });
         console.log(res.body[0])
     })
 });
